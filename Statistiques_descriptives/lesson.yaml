@@ -1,0 +1,376 @@
+
+- Class: meta
+  Course: TP1-TC-CI
+  Lesson: Statistiques descriptives
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: text
+  Output: Bienvenue dans cette deuxième leçon du premier TP où nous allons explorer les fonctionnalités de base pour faire des statistiques descriptives avec R.
+    Durant ce semestre, nous utiliserons très régulièrement les instructions présentées dans cette leçon.
+    L'idée est de vous en faire une première présentation rapide. Nous reviendrons ensuite largement sur ces différentes instructions.
+
+- Class: text
+  Output: R permet très simplement de générer des nombres de façon aléatoire en suivant différentes stratégies qui définissent ce qu'on appelle la loi de la variable aléatoire.
+    Dans cette leçon, nous allons explorer deux stratégies de simulation de suites de nombres aléatoires, c'est-à-dire deux lois de probabilité.
+
+- Class: cmd_question
+  Output: Afin de comprendre ce que nous allons faire, commençons par comprendre le résultat de l'instruction 1:6. Tapez cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='1:6')
+  Hint: Tapez 1:6 puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Vous voyez que l'instruction 1:6 génère un vecteur contenant tous les entiers compris entre 1 et 6.
+
+- Class: cmd_question
+  Output: Maintenant nous allons utiliser l'instruction sample() pour simuler le résultat de 20 lancés successifs d'un dé.
+    Nous stockerons le résultat dans la variable data_de. Pour ce faire, il faut taper l'instruction data_de <- sample(1:6, 20, replace=TRUE). A vous de jouer au dé !
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_de <- sample(1:6, 20, replace=TRUE)')
+  Hint: Tapez data_de <- sample(1:6, 20, replace=TRUE) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Affichez le résultat des 20 lancés de dé.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=data_de)
+  Hint: Rappelez-vous que, pour afficher la valeur d'une variable, il suffit de taper son nom puis d'appuyer sur la touche Entrée.
+
+- Class: text
+  Output: On a bien 20 valeurs comprises entre 1 et 6. Il semblerait donc bien que R sache lancer des dés.
+
+- Class: text
+  Output: L'instruction sample() que nous avons utilisée avait 3 arguments séparés par des virgules.
+    Le premier argument 1:6 spécifie que l'on va tirer des valeurs aléatoirement parmi le vecteur 1:6, c'est-à-dire parmi les entiers compris entre 1 et 6.
+    Le deuxième argument 20 spécifie qu'on va faire 20 fois l'expérience aléatoire.
+    Enfin, le dernier argument dit qu'on peut tirer plusieurs fois la même valeur, c'est un tirage avec remise (en anglais replace).
+
+- Class: cmd_question
+  Output: Afin de vérifier que les résultats de l'instruction data_de <- sample(1:6, 20, replace=TRUE) est bien aléatoire, tapez une deuxième fois la même instruction.
+    Si vous êtes un peu fatigué, plutôt que de retaper cette instruction, vous pouvez appuyer sur le bouton flèche vers le haut.
+    R affichera alors successivement les différentes instructions que vous avez déjà tapées.
+    Et on peut ensuite revenir en avant dans les instructions avec la flèche vers le bas.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_de <- sample(1:6, 20, replace=TRUE)')
+  Hint: Tapez data_de <- sample(1:6, 20, replace=TRUE) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Affichez les valeurs de data_de afin de vérifier que les résultats des 20 lancés de dé sont bien différents de la première expérience.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=data_de)
+  Hint: Rappelez-vous que pour afficher la valeur d'une variable il suffit de taper son nom puis d'appuyer sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Si vous avez compris, à votre tour de générer aléatoirement avec l'instruction sample, 100 lancés d'un dé à 7 faces et affecter le résultat à la variable data_de2.
+  CorrectAnswer: data_de2 <- sample(1:7, 100, replace=TRUE)
+  AnswerTests: omnitest(correctExpr='data_de2 <- sample(1:7, 100, replace=TRUE)')
+  Hint: Relisez l'explication précédente donnant le sens des trois arguments que nous avons utilisés dans l'instruction sample(). Ici, on vous demande 100 lancés d'un dé à 7 faces. N'oubliez pas d'affecter le résultat à la variable data_de2.
+    Si vous n'arrivez vraiment pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip().
+
+- Class: text
+  Output: Avec un dé, tous les entiers compris entre 1 et 6 ont tous autant de chances d'apparaître.
+    Il existe une autre loi dite uniforme sur [0,1] dont le principe est similaire, sauf que c'est alors tous les nombres de l'intervalle [0,1] qui ont chacun autant de chances d'être choisis.
+
+- Class: cmd_question
+  Output: Pour simuler des nombres selon la loi uniforme sur [0,1] avec R, il faut utiliser l'instruction runif().
+    Le seul argument à ajouter à l'instruction est combien on veut simuler de nombres. Affectez au vecteur data_unif le résultat de 20 simulations selon la loi uniforme sur [0,1].
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_unif <- runif(20)')
+  Hint: Tapez data_unif <- runif(20) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Affichez les valeurs de data_unif afin de vérifier que vous venez bien de simuler 20 nombres compris entre 0 et 1.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=data_unif)
+  Hint: Rappelez-vous que, pour afficher la valeur d'une variable, il suffit de taper son nom puis d'appuyer sur la touche Entrée.
+
+- Class: text
+  Output: Pour avoir accès au cinquième élément du vecteur data_unif, il faut taper data_unif[5].
+    Vous pouvez remplacer le 5 par un vecteur qui indiquera alors les indices des éléments auxquels vous voulez avoir accès.
+    Par exemple, vous savez que l'instruction 1:6 génère un vecteur contenant tous les entiers de 1 à 6.
+    Ainsi, data_unif[1:6] va afficher les 6 premiers éléments du vecteur data_unif.
+
+- Class: cmd_question
+  Output: A votre tour maintenant d'afficher par la même méthode les cinq premiers éléments de data_unif.
+    Si vous avez un mac, pour afficher le symbole [ il faut maintenir appuyées les touches Alt et grosse flèche vers le haut (celle des majuscules non permanente) puis appuyer sur la touche parenthèse ouvrante.
+    Pour le symbole ], c'est la même chose avec la touche parenthèse fermante.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_unif[1:5]')
+  Hint: Tapez data_unif[1:5] puis appuyez sur la touche Entrée. Si vous avez un mac, pour afficher le symbole [ il faut maintenir appuyées les touches Alt et grosse flèche vers le haut (celle des majuscules non permanente) puis appuyer sur la touche parenthèse ouvrante.
+    Pour le symbole ], c'est la même chose avec la touche parenthèse fermante.
+
+- Class: exact_question
+  Output: Quelle est la somme des cinq premiers éléments du vecteur data_unif que vous venez de faire afficher ?
+    On pourra se contenter d'une approximation à 0.001 de chacun des 5 premiers éléments.
+    Si ce petit calcul mental vous pose problème, n'oubliez pas que R est aussi une calculette.
+  AnswerTests: test_between(sum(floor(data_unif[1:5]*1000)/1000),sum(ceiling(data_unif[1:5]*1000)/1000))
+  Hint: Demandez à R de faire la somme des différents éléments que vous venez d'afficher.
+
+- Class: cmd_question
+  Output: En fait, il existe une instruction R très simple pour faire ce calcul. C'est l'instruction sum().
+    Par exemple l'instruction sum(y) va faire la somme des différents éléments du vecteur y.
+    Utilisez cette instruction pour faire encore une fois la somme des 5 premiers éléments du vecteur data_unif.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='sum(data_unif[1:5])')
+  Hint: Tapez sum(data_unif[1:5]) puis appuyez sur la touche Entrée, afin de calculer la somme des 5 premiers éléments de data_unif.
+
+- Class: text
+  Output: Vérifiez que les deux méthodes de calcul donnent bien approximativement le même résultat.
+
+- Class: text
+  Output: La méthode utilisant l'instruction sum() est plus précise que de taper la valeur numérique des différents éléments data_unif.
+    En effet, elle prend en compte la valeur exacte, avec toutes les décimales, de chacun des éléments.
+
+- Class: cmd_question
+  Output: Pour connaître la taille d'un vecteur, on peut utiliser l'instruction length().
+    Utilisez cette instruction pour vérifier que la taille du dernier jeu de données simulées, data_unif, est bien 20.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='length(data_unif)')
+  Hint: Tapez length(data_unif) puis appuyez sur la touche Entrée, afin de vérifier que vous avez bien simulé 20 valeurs selon une loi uniforme.
+
+- Class: exact_question
+  Output: Vous devez sans doute vous souvenir que la moyenne (de vos notes ou quoi que ce soit d'autre) correspond à la somme des éléments divisée par le nombre d'éléments sommés.
+    En conséquence, utilisez les instructions sum() et length() vues précédemment pour calculer la moyenne des valeurs du vecteur data_unif.
+  CorrectAnswer: sum(data_unif)/length(data_unif)
+  AnswerTests: omnitest(correctVal = sum(data_unif)/length(data_unif))&expr_uses_func('sum')&expr_uses_func('length')
+  Hint: Calculez la moyenne des éléments du vecteur data_unif en faisant la somme des éléments (à l'aide de l'instruction sum()) divisée par le nombre d'éléments (à l'aide de l'instruction length()).
+
+- Class: cmd_question
+  Output: En R, il existe une méthode beaucoup plus simple pour calculer la moyenne.
+    Elle consiste à utiliser l'instruction mean(), en effet mean signifie moyenne en anglais.
+    Utilisez cette instruction pour calculer à nouveau la moyenne des éléments du vecteur data_unif.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='mean(data_unif)')
+  Hint: Tapez mean(data_unif) puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Alors les deux moyennes correspondent-elles bien ?
+
+- Class: cmd_question
+  Output: L'instruction permettant de calculer la variance est var().
+    Utilisez cette instruction pour calculer la variance des éléments du vecteur data_unif.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='var(data_unif)')
+  Hint: Tapez var(data_unif) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Vous vous souvenez sans doute que l'écart-type est la racine carrée de la variance.
+    J'espère que vous vous souvenez quelle est l'instruction permettant de calculer la racine carrée en R.
+    En effet, vous devez maintenant utiliser cette instruction et la fonction var pour calculer l'écart-type des éléments du vecteur data_unif.
+    Un indice, racine carrée se dit square root en anglais.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='sqrt(var(data_unif))')
+  Hint: Pour calculer l'écart-type, prenez la racine carrée (sqrt()) de la variance (var()) de data_unif.
+
+- Class: cmd_question
+  Output: Il existe une méthode plus simple pour calculer l'écart-type. Elle consiste à utiliser l'instruction sd().
+    En effet, écart-type se traduit en anglais par standard deviation, d'où les initiales.
+    Utilisez l'instruction sd() pour calculer l'écart-type des éléments du vecteur data_unif.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='sd(data_unif)')
+  Hint: Tapez sd(data_unif) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: L’instruction sort(y) classe les éléments du vecteur y du plus petit au plus grand (en anglais sort signifie trier).
+    Utilisez cette instruction pour classer les éléments du vecteur data_unif du plus petit au plus grand. Vous affecterez le résultat à la variable data_unif2.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_unif2 <- sort(data_unif)')
+  Hint: Tapez data_unif2 <- sort(data_unif) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Et affichez data_unif2 pour vérifier que les résultats sont maintenant bien triés par ordre croissant.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data_unif2')
+  Hint: Rappelez-vous que, pour afficher la valeur d'une variable, il suffit de taper son nom puis d'appuyer sur la touche Entrée.
+
+- Class: text
+  Output: L'année dernière, en statistiques descriptives, nous vous avons appris la notion de médiane et de quartile.
+    Rappelez-vous que la médiane correspond à une valeur du caractère qui coupe en deux la série statistique.
+    La moitié des valeurs de la série statistique doit être plus petite que la médiane, et par conséquent l'autre moitié doit être plus grande.
+    Pour les quartiles, c'est la même chose mais on coupe en 4. Et pour couper en 4 il faut 3 quartiles.
+    Tout cela se généralise avec la notion de quantile.
+
+- Class: text
+  Output: Les quantiles vont être une notion très importante de ce cours de statistique.
+    Nous reviendrons largement dessus par la suite pour bien en préciser le sens.
+    L'idée est maintenant simplement de prendre connaissance de cette notion de quantile.
+
+- Class: text
+  Output: La médiane correspond au quantile d'ordre 0.5 car il y a 50% des valeurs du caractère qui sont plus petites que la médiane (et les 50% restantes sont plus grandes).
+    Le premier quartile correspond au quantile d'ordre 0.25 car il y a 25% des valeurs du caractère qui sont plus petites que le premier quartile.
+
+- Class: exact_question
+  Output: En conséquence, quel est l'ordre du troisième quartile ?
+  CorrectAnswer: 0.75
+  AnswerTests: omnitest(correctVal = 0.75)
+  Hint: La médiane est en fait le deuxième quartile.
+    La médiane est aussi le quantile d'ordre 0.5.
+    Le premier quartile est le quantile d'ordre 0.25.
+    Au final, quel doit être l'ordre du troisième quartile ?
+    Si vous n'arrivez vraiment pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip().
+
+- Class: exact_question
+  Output: Quelle est la taille du vecteur data_unif ?
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal = length(data_unif))
+  Hint: Relisez les précédentes instructions de ce TP pour retrouver comment data_unif a été généré, ou utilisez l'instruction length() pour retrouver la taille de data_unif.
+
+- Class: exact_question
+  Output: Utilisez une instruction vue précédemment pour faire afficher les valeurs de data_unif classées de la plus petite à la plus grande.
+  CorrectAnswer: sort(data_unif)
+  AnswerTests: omnitest(correctVal = sort(data_unif))
+  Hint: On vient de faire exactement la même chose juste avant dans cette leçon !
+
+- Class: exact_question
+  Output: La médiane de data_unif est telle que la moitié des valeurs de data_unif sont plus petites que la médiane, et la moitié des valeurs sont plus grandes.
+    En conséquence, au vu du résultat que vous avez affiché dans la question précédente, entre quelles valeurs successives de data_unif doit se trouver la médiane ?
+    Pour répondre, vous devez créer un vecteur de 2 valeurs donnant cet intervalle à 0.001 près.
+  CorrectAnswer: sort(data_unif)[c(50,51)]
+  AnswerTests: test_between(c(floor(sort(data_unif)[floor(length(data_unif)/2)]*1000)/1000, floor(sort(data_unif)[ceiling(length(data_unif)/2)]*1000)/1000), c(ceiling(sort(data_unif)[floor(length(data_unif)/2)]*1000)/1000, ceiling(sort(data_unif)[ceiling(length(data_unif)/2)]*1000)/1000))
+  Hint: A partir des valeurs de data_unif classées par ordre croissant, que vous avez affichées dans la question précédente,
+    trouvez les deux valeurs de data_unif entre lesquelles on doit donner le `coup de couteau` pour partager la série statistique en deux.
+    Ensuite, tapez c( puis inscrivez la plus petite des deux valeurs à 0.001 près, puis tapez sur la touche virgule, puis inscrivez la plus grande des deux valeurs à 0.001 près, puis tapez sur la touche parenthèse fermante, puis enfin sur la touche Entrée.
+    Si vous n'arrivez vraiment pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip().
+
+- Class: text
+  Output: Ensuite, on peut utiliser, comme on l'a fait l'année dernière, une interpolation linéaire pour trouver une valeur cohérente de la médiane dans cet intervalle.
+
+- Class: cmd_question
+  Output: En R, il existe une instruction très simple pour directement trouver la valeur d'un quantile.
+    Par exemple, pour trouver le troisième quartile des résultats contenus dans le jeu de données data_unif, il faut taper l'instruction quantile(data_unif, probs=0.75).
+    Utilisez le même type d'instruction pour trouver la médiane du jeu de données data_unif.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='quantile(data_unif, probs=0.5)')
+  Hint: Tapez quantile(data_unif, probs=0.5) puis appuyez sur la touche Entrée.
+
+- Class: exact_question
+  Output: En conséquence, quelle est la valeur de la médiane du vecteur data_unif que vous venez de calculer avec R ? Donnez trois chiffres significatifs au moins.
+  CorrectAnswer: NULL
+  AnswerTests: test_between(floor(quantile(data_unif, probs=0.5)[[1]]*1000)/1000, ceiling(quantile(data_unif, probs=0.5)[[1]]*1000)/1000)
+  Hint: Il vous suffit de reprendre le résultat du calcul précédent. On vous demande simplement trois chiffres significatifs.
+
+- Class: text
+  Output: Comme vous pouvez le remarquer, la valeur de la médiane proposée par R est bien dans l'intervalle où on s'attendait à la trouver !
+
+- Class: cmd_question
+  Output: Maintenant, vous allez demander à R de tracer l'histogramme correspondant du jeu de données data_unif.
+    Pour ce faire, il vous faut taper l'instruction suivante hist(data_unif, freq=FALSE). A vous de jouer !
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='hist(data_unif, freq=FALSE)')
+  Hint: Tapez hist(data_unif, freq=FALSE) puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: On s'attend à obtenir un histogramme relativement "plat" puisque théoriquement toutes les valeurs de l'intervalle [0,1] ont chacune autant de chances d'être tirées au hasard.
+    En pratique, qu'en pensez-vous ?
+
+- Class: text
+  Output: Oui, mais d'un autre côté on n'a simulé que 20 valeurs, ce n'est peut-être pas suffisant...
+
+
+- Class: text
+  Output: Pour finir, nous allons vous apprendre à calculer une fréquence ou proportion en utilisant R.
+
+- Class: cmd_question
+  Output: L’instruction table(y) donne la table des effectifs du vecteur y. La première ligne donne les différentes valeurs du vecteur y. La seconde ligne donne, pour chaque valeur, l’effectif associé.
+    Appliquez l'instruction table aux 100 lancés de dé à 7 faces que vous avez précédemment simulés et stockés dans la variable data_de2.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='table(data_de2)')
+  Hint: Tapez table(data_de2) puis appuyez sur la touche Entrée.
+
+- Class: exact_question
+  Output: En conséquence, combien de fois parmi les 100 tirages aléatoires le dé à 7 faces a t'il pris la valeur 2 ?
+  CorrectAnswer: table(data_de2)[[2]]
+  AnswerTests: omnitest(correctVal = table(data_de2)[[2]])
+  Hint: Servez-vous des résultats renvoyés précédemment par l'instruction table().
+
+- Class: exact_question
+  Output: En conséquence, quelle est fréquence d'apparition de la face 2 lors des 100 tirages aléatoires du dé à 7 faces ?
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal = table(data_de2)[[2]]/100)
+  Hint: Servez-vous de la réponse à la question précédente. En plus, vous devez bien vous souvenir que la fréquence d'apparition de la face 2 correspond au nombre de fois où la face 2 est apparue divisé par le nombre total de lancés de dé.
+
+- Class: text
+  Output: Il existe une autre méthode pour calculer une fréquence avec R. Cette méthode a l'avantage de se généraliser facilement à d'autres situations, comme nous allons le voir par la suite.
+
+- Class: cmd_question
+  Output: Tout d'abord, comme nous l'avons vu dans la leçon précédente,
+    l'instruction data_de2==2 permet de savoir quels sont les tirages dont le résultat est 2.
+    Tapez cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('data_de2==2', '2==data_de2')
+  Hint: Tapez data_de2==2 puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Vous pouvez vérifier dans le résultat précédent qu'on a une valeur TRUE à chaque fois que le résultat correspondant dans data_de2 est 2, sinon on a un FALSE.
+
+- Class: text
+  Output: Souvenez-vous que TRUE correspond pour R à la valeur 1 et FALSE à la valeur 0.
+
+- Class: cmd_question
+  Output: Donc, avec l'instruction sum(data_de2==2), vous allez savoir combien de résultats du lancé de dé sont égaux à 2.
+    Tapez donc cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('sum(data_de2==2)', 'sum(2==data_de2)')
+  Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Vérifiez que le résultat est bien le même que celui que vous avez déduit précédemment à partir des résultats de l'instruction table().
+
+- Class: cmd_question
+  Output: Maintenant, pour calculer la fréquence d'apparition de la face 2, il suffit de diviser ce résultat par le nombre de lancés de dé.
+    Vous devez utiliser l'instruction sum() comme on vient de le voir pour calculer la fréquence d'apparition de la face 2 parmi les résultats de data_de2.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=sum(data_de2==2)/length(data_de2))&expr_uses_func('sum')
+  Hint: Il vous faut taper sum(data_de2==2) et le diviser par la taille du vecteur data_de2 pour calculer la fréquence d'apparition de la face 2.
+
+- Class: cmd_question
+  Output: En fait, avec l'instruction précédente, vous venez de calculer une moyenne, à savoir
+    en moyenne combien de résultats du dé sont égaux à 2 par rapport à l'ensemble des lancés.
+    Vous pouvez donc plus simplement calculer exactement le même résultat en tapant simplement l'instruction
+    mean(data_de2==2). Tapez cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('mean(data_de2==2)', 'mean(2==data_de2)')
+  Hint: Tapez mean(data_de2==2) puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Et vérifiez que le résultat est bien le même qu'en utilisant l'instruction sum().
+
+- Class: text
+  Output: De façon similaire, on peut aussi, par exemple, calculer la fréquence des résultats compris entre 3  et 5, tous deux inclus, avec l'instruction
+    mean(data_de2>=3 & data_de2<=5).
+
+- Class: cmd_question
+  Output: Maintenant que vous avez compris le principe, utilisez l'instruction mean() pour calculer la fréquence des résultats strictement supérieurs à 2 et inférieurs ou égaux à 6.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=mean(data_de2>2 & data_de2<=6))&expr_uses_func('mean')
+  Hint: Relisez ce qu'on vous a expliqué dans l'exemple précédent et utilisez l'instruction mean() pour calculer la fréquence des résultats strictement supérieurs à 2 et inférieurs ou égaux à 6.
+
+
+- Class: mult_question
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Etes-vous prêt ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Etes-vous certain de ne pas vouloir valider votre TP ? Dans ce cas appuyer sur la touche Esc pour sortir de cette leçon.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: googleForm_log()
+  Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: text
+  Output: Maintenant à vous de faire la dernière leçon de ce TP1. Ne vous inquiétez pas, elle est vraiment très courte.

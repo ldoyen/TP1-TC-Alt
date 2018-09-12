@@ -1,0 +1,334 @@
+- Class: meta
+  Course: TP1-TC-CI
+  Lesson: Instructions R de base
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: text
+  Output: Bienvenu dans cette première leçon du premier TP où nous allons explorer les principales instructions de base de R qui vous seront utiles pour le cours de mathématiques du semestre 3. Ce TP est donc une première prise en main du logiciel R.
+
+- Class: text
+  Output: R est un logiciel gratuit pour faire des traitements statistiques de données et des graphiques. Afin de pouvoir utiliser R de façon plus interactive, nous vous avons fait installer également R-Studio. Vous devrez toujours travailler avec R-Studio, c'est lui qui assurera l'interface avec R.
+
+- Class: text
+  Output: La force de R, qui fait qu'il est même utilisé par les chercheurs en Statistique, vient du fait que ses fonctionnalités peuvent être augmentées grâce au chargement de packages. Ce TP utilise le package swirl que vous avez d'abord installé puis ensuite chargé avec la commande library(swirl). A chaque fois que vous ré-ouvrez R-Studio, vous devez à nouveau charger les packages dont vous avez besoin. Par contre, il n'est pas nécessaire de les installer à nouveau.
+
+- Class: text
+  Output: swirl est un package R qui permet d'apprendre le R à partir de R. Si un jour vous souhaitez en apprendre plus sur R, pensez à utiliser swirl et les cours génériques qu'il propose. Le cours qui suit a été écrit par vos enseignants de mathématiques de TC et s'intéresse uniquement aux notions dont vous aurez besoin cette année. Commençons !
+
+- Class: cmd_question
+  Output: Dans sa version la plus simple, R peut être utilisé comme une simple calculette. Tapez
+   5 + 7 puis appuyez sur la touche Entrée.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='5 + 7')
+  Hint: Tapez 5 + 7 puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Par défaut, R écrit simplement le résultat du calcul, soit 12 dans notre cas.
+    Cependant, il est parfois utile de mémoriser un résultat afin de pouvoir le réutiliser ensuite.
+    Plutôt que de réécrire 5 + 7 à chaque fois qu'on en aura besoin, on peut simplement créer une nouvelle variable pour stocker le résultat.
+
+- Class: text
+  Output: En R, pour affecter une valeur à une variable, il faut utiliser l'opérateur d'affectation qui est constitué du symbole "inférieur" suivi d'un signe "moins", c'est à dire <-
+
+- Class: text
+  Output: Voyez cet opérateur d'affectation comme une flèche.
+    Ainsi, vous affectez la valeur du côté droit de la flèche à la variable du côté gauche de la flèche.
+
+
+- Class: cmd_question
+  Output: Pour affecter le résultat 5 + 7 à une nouvelle variable nommée x, il suffit de taper x <-
+    5 + 7. A votre tour d'essayer.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('x <- 5 + 7', 'x <- 7 + 5')
+  Hint: Tapez x <- 5 + 7. Il est mieux d'ajouter un espace de chaque côté de l'opérateur d'affectation. Par contre, il ne faut surtout pas ajouter un espace entre les caractères "<" et "-" qui forment la flèche d'affectation.
+
+- Class: text
+  Output: Vous avez sans doute noté que R n'a pas affiché le résultat 12 cette fois-ci.
+    Quand vous utilisez l'opérateur d'affectation, R suppose que vous ne souhaitez pas voir le résultat immédiatement, mais que vous souhaitez le conserver pour de futurs calculs.
+
+- Class: cmd_question
+  Output: Pour voir le contenu de la variable x, tapez x et appuyez sur la touche Entrée. A votre tour d'essayer.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Tapez x puis appuyez sur la touche Entrée. Cela affichera automatiquement la valeur de la variable x.
+
+- Class: cmd_question
+  Output: Maintenant, stockez le résultat de x - 3 dans une nouvelle variable appelée y.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='y <- x - 3')
+  Hint: Tapez y <- x - 3 puis appuyez sur la touche Entrée. Vous pouvez indifféremment taper x - 3 ou x-3. Par contre, c'est une bonne habitude d'inclure des espaces de part et d'autre de l'opérateur d'affectation.
+
+- Class: cmd_question
+  Output: Quelle est la valeur de y ? Tapez simplement y pour le savoir.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Tapez y puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: x contenait la valeur 12, et en lui soustrayant 3 cela fait naturellement 9 !
+
+- Class: cmd_question
+  Output: Attention, en R, pour écrire un nombre décimal, il faut impérativement utiliser le point et jamais la virgule.
+    En effet, la virgule est le symbole qui permet de différencier les différents arguments d'une instruction.
+    Si vous mettez une virgule à la place du point, R ne vous renverra pas nécessairement une erreur, vous obtiendrez en général un résultat qui ne correspondra absolument pas à ce que vous cherchiez à calculer.
+    A votre tour maintenant d'écrire le résultat décimal correspondant à 5/2.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr = '2.5')
+  Hint: En R, le résultat de 5/2 est ` 2.5` et pas `2,5`.
+
+- Class: text
+  Output: Les opérateurs arithmétiques communs disponibles sous R sont `+`, `-`, `*`, `/`, et `^`.
+    Le symbole `*` correspond à la multiplication, et le symbole `^` correspond à la puissance, de tel sorte que
+     `x^2` signifie 'x au carré'. Pour calculer la racine carrée, il faut utiliser l'instruction sqrt()
+    (en anglais racine carrée se dit `square root`, d'où les initiales).
+    Pour la valeur absolue, il faut utiliser l'instruction abs().
+
+- Class: cmd_question
+  Output: D'après vous, quel est le résultat de sqrt(2*2)^2 ?
+  CorrectAnswer: 4
+  AnswerTests: omnitest(correctExpr = '4')
+  Hint: sqrt() signifie racine carrée et ^2 signifie au carré.
+
+- Class: cmd_question
+  Output: Maintenant, créons une suite de nombres appelée vecteur.
+    La façon la plus simple de créer un vecteur est d'utiliser l'instruction c() qui signifie concaténer ou combiner.
+    Pour créer un vecteur qui contient les nombres 1.1 et 9 et 3.14, il faut taper c(1.1, 9, 3.14). Essayez maintenant de créer ce vecteur et affectez le résultat dans une variable appelée z.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='z <- c(1.1, 9, 3.14)')
+  Hint: Exécuter la ligne de commande z <- c(1.1, 9, 3.14) aura pour effet d'affecter le vecteur (1.1, 9, 3.14) a une variable appelée z.
+    Ajouter un espace après la virgule n'est pas obligatoire, mais cela permet en général de rendre votre code plus lisible.
+
+- Class: cmd_question
+  Output: On peut utiliser les vecteurs dans les opérations arithmétiques courantes.
+    Tapez l'instruction suivante pour voir le résultat du calcul z * 2 + 100.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='z * 2 + 100')
+  Hint: Tapez simplement z * 2 + 100 sans affecter le résultat à une variable.
+
+- Class: text
+  Output: Tout d'abord, R a multiplié les 3 éléments de z par 2.
+    Puis il a ajouté 100 à chaque élément afin d'obtenir le résultat.
+
+- Class: text
+  Output: Dans le calcul z * 2 + 100, z est un vecteur de dimension 3, mais d'un point de vue technique 2 et 100 sont tous deux des vecteurs de dimension 1.
+
+- Class: cmd_question
+  Output: En fait, R applique une opération appelée "recyclage".
+    Sans qu'on s'en rende compte, il remplace la valeur 2 par un vecteur de valeurs 2 et il remplace la valeur 100 par un vecteur de valeurs 100.
+    En d'autres termes, quand vous demandez à R de calculer z * 2 + 100,
+    l'opération qui est en réalité faite est z * c(2, 2, 2) + c(100, 100, 100). Tapez cette dernière instruction et vérifiez que le résultat est bien le même que le précédent.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='z * c(2, 2, 2) + c(100, 100, 100)')
+  Hint: Tapez simplement z * c(2, 2, 2) + c(100, 100, 100) sans affecter le résultat à une variable et vérifiez que le résultat est bien le même que le précédent.
+
+- Class: cmd_question
+  Output: Maintenant à vous de prendre la racine carrée de z - 1 et d'affecter le résultat à une nouvelle variable appelée my_sqrt.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='my_sqrt <- sqrt(z - 1)')
+  Hint: Affectez le résultat de sqrt(z - 1) à une variable appelée my_sqrt.
+
+- Class: mult_question
+  Output: Avant de regarder le contenu de la variable my_sqrt, que pensez-vous qu'elle contient ?
+  CorrectAnswer: NULL
+  AnswerChoices: un vecteur de dimension 3; un simple nombre (c'est-à-dire un vecteur de dimension 1);
+    un vecteur de dimension 0 (c'est-à-dire un vecteur vide)
+  AnswerTests: omnitest(correctVal='un vecteur de dimension 3')
+  Hint: Souvenez-vous comment R a réalisé, élément par élément, la précédente opération ''vectorielle''.
+
+- Class: cmd_question
+  Output: Affichez la valeur de my_sqrt.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='my_sqrt')
+  Hint: Tapez simplement my_sqrt puis appuyez sur la touche Entrée pour visualiser sa valeur.
+
+- Class: text
+  Output: Comme vous l'avez sans doute supposé, R a d'abord enlevé 1 à chaque élément de z, puis il a appliqué la racine carrée à chacun des éléments.
+     Le calcul aboutit alors à un vecteur de même longueur que z.
+
+- Class: exact_question
+  Output: Si vous avez bien suivi ce que je viens de dire, vous savez maintenant que le résultat l'instruction (c(4, 8, 10) - 2) / 3 est un vecteur de dimension 3. Mais que vaut la deuxième valeur de ce vecteur ?
+  CorrectAnswer: 2
+  AnswerTests: omnitest(correctVal = 2)
+  Hint: R enlève 2 puis on divise par 3 chacun des éléments du vecteur.
+
+- Class: cmd_question
+  Output: Vérifiez le calcul en tapant simplement l'instruction (c(4, 8, 10) - 2) / 3.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='(c(4, 8, 10) - 2) / 3')
+  Hint: Tapez simplement (c(4, 8, 10) - 2) / 3 puis appuyez sur la touche Entrée pour visualiser le résultat du calcul.
+
+- Class: text
+  Output: La deuxième valeur du vecteur est bien 2. Vous pouvez également vérifier que le calcul est bien cohérent sur les autres valeurs du vecteur.
+
+- Class: text
+  Output: Outre les valeurs numériques, R permet aussi de traiter des valeurs logiques appelées booléens. Ce sont les valeurs TRUE qui signifie vrai et FALSE qui signifie faux.
+
+- Class: cmd_question
+  Output: Afin de créer des expressions logiques, il existe des opérateurs logiques. Le premier opérateur logique que nous allons aborder est l'égalité représentée par deux signes égal ==.
+    Utilisez l'opérateur logique d'égalité pour savoir si 1 est égal à 2.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('1 == 2', '2 == 1')
+  Hint: Utilisez l'opérateur logique d'égalité et tapez 1 == 2.
+
+- Class: text
+  Output: En effet, le résultat est FALSE, tout le monde sait bien que 1 n'est pas égal à 2 !
+
+- Class: cmd_question
+  Output: Si 1 n'est pas égal à 2, cela signifie que 1 et 2 sont différents. L'opérateur logique permettant de tester la non égalité est représenté par !=. Utilisez cet opérateur pour comparer 1 et 2 et vérifier que les deux nombres sont bien différents.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('1 != 2', '2 != 1')
+  Hint: Utilisez l'opérateur logique de 'non égalité' et tapez 1 != 2.
+
+- Class: cmd_question
+  Output: On peut aussi tester si un nombre est plus petit ou plus grand qu'un autre à l'aide des opérateurs < ou >. Utilisez un de ces deux opérateurs logiques pour tester si 2 est strictement inférieur à 1.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('2 < 1', '1 > 2')
+  Hint: Tapez une instruction logique correspondant à 2 strictement inférieur à 1.
+
+- Class: text
+  Output: Bien entendu, R nous répond que 2 n'est pas plus petit que 1 !
+
+- Class: cmd_question
+  Output: Sont également disponibles en R les opérateurs logiques 'plus petit ou égal' représenté par le symbole <= et 'plus grand ou égal' représenté par le symbole >=.
+    Utilisez un de ces opérateurs pour tester si 10 est plus petit ou égal à 10.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('10 <= 10', '10 >= 10')
+  Hint: Tapez une instruction logique correspondant à 10 inférieur ou égal à (<=) 10.
+
+- Class: text
+  Output: On dirait bien que R ne se trompe jamais !
+
+- Class: mult_question
+  Output: Laquelle de ces instructions est évaluée à TRUE ?
+  CorrectAnswer: NULL
+  AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7
+  AnswerTests: omnitest(correctVal='-6 > -7')
+  Hint: Si vous le désirez, vous pouvez évaluer chacune de ces expressions dans une autre session R.
+
+- Class: text
+  Output: Il est parfois nécessaire de pouvoir examiner les relations entre différentes expressions logiques.
+    Pour ce faire, on doit utiliser les opérateurs 'et' représenté par le symbole & et 'ou' représenté par le symbole |.
+
+- Class: cmd_question
+  Output: D'après vous, l'instruction 1<2 & 3<4 va t-elle être évaluer à TRUE ou FALSE ? Tapez cette instruction pour vérifier votre intuition.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='1<2 & 3<4')
+  Hint: Tapez l'instruction 1<2 & 3<4, puis appuyer sur la touche Entrée pour vérifier le résultat de cette expression logique.
+
+- Class: mult_question
+  Output: D'après vous, quel va être le résultat de l'instruction 1<2 & 3<2 ?
+  CorrectAnswer: NULL
+  AnswerChoices: FALSE; TRUE
+  AnswerTests: omnitest(correctVal='FALSE')
+  Hint: Si vous le désirez, vous pouvez évaluer cette expression dans une autre session R.
+
+- Class: mult_question
+  Output: Expérimentons maintenant l'opérateur logique 'ou' représenté par le symbole | en R.
+    D'après vous, quel va être le résultat de l'instruction 1<2 | 3<2?
+  CorrectAnswer: NULL
+  AnswerChoices: FALSE; TRUE
+  AnswerTests: omnitest(correctVal='TRUE')
+  Hint: Si vous le désirez, vous pouvez évaluer cette expression dans une autre session R.
+
+- Class: cmd_question
+  Output: Afin de vérifier ce résultat, tapez l'instruction en question 1<2 | 3<2.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='1<2 | 3<2')
+  Hint: Tapez l'instruction 1<2 | 3<2, puis appuyez sur la touche Entrée. Avec un mac, vous pouvez écrire le symbole | en maintenant la touche `cmd` appuyée tout en appuyant sur la touche `l`.
+
+- Class: cmd_question
+  Output: Comme nous l'avons vu précédemment, R sait appliquer les opérateurs de calcul arithmétique à des vecteurs. Et bien nous allons voir qu'il en est de même pour les opérateurs logiques.
+    Pour commencer, affectez à la variable nommée w, un vecteur contenant les valeurs 11, 3, 4, 5 et 9.
+  CorrectAnswer: w <- c(11, 3, 4, 5, 9)
+  AnswerTests: omnitest(correctExpr='w <- c(11, 3, 4, 5, 9)')
+  Hint: Souvenez-vous que l'opérateur d'affectation est <- et que l'opérateur permettant de créer un vecteur est c().
+
+- Class: mult_question
+  Output: Si vous avez bien compris ce que nous avons vu précédemment. Quel va être le résultat de l'instruction w == 5 ?
+  CorrectAnswer: NULL
+  AnswerChoices: un vecteur de dimension 5; TRUE; FALSE
+  AnswerTests: omnitest(correctVal='un vecteur de dimension 5')
+  Hint: Souvenez-vous que R applique les opérateurs sur un vecteur élement par élément.
+
+- Class: cmd_question
+  Output: Afin de vérifier le résultat, tapez l'instruction R en question w == 5.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='w == 5')
+  Hint: Tapez w == 5, puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Vous vous rendez compte que R a vérifié une à une si les différentes valeurs de w étaient égales à 5.
+    La première valeur de w, à savoir 11, n'est pas égale à 5, d'où le premier FALSE.
+    La deuxième valeur de w, à savoir 3, n'est pas égale à 5, d'où le deuxième FALSE...
+
+- Class: mult_question
+  Output: Si vous avez bien compris l'exemple précédent, quel va être le résultat de l'instruction w < 5 ?
+  CorrectAnswer: NULL
+  AnswerChoices: un vecteur de dimension 5; TRUE; FALSE
+  AnswerTests: omnitest(correctVal='un vecteur de dimension 5')
+  Hint: Souvenez-vous que R applique les opérateurs sur un vecteur élement par élément.
+
+- Class: cmd_question
+  Output: Construire un vecteur contenant uniquement des valeurs TRUE ou FALSE qui corresponde au résultat de l'expression w < 5.
+  CorrectAnswer: c(FALSE, TRUE, TRUE, FALSE, FALSE)
+  AnswerTests: omnitest(correctExpr='c(FALSE, TRUE, TRUE, FALSE, FALSE)')
+  Hint: Souvenez-vous que w correspond au vecteur c(11, 3, 4, 5, 9) et que  R applique les opérateurs sur un vecteur élement par élément. Ainsi, à quel vecteur sera égal w<5 ?
+
+- Class: cmd_question
+  Output: Pour confirmer que vous avez bien compris les choses, construire un vecteur contenant uniquement des valeurs TRUE ou FALSE, mais qui correspond cette fois-ci au résultat de l'expression w <= 5.
+  CorrectAnswer: c(FALSE, TRUE, TRUE, TRUE, FALSE)
+  AnswerTests: omnitest(correctExpr='c(FALSE, TRUE, TRUE, TRUE, FALSE)')
+  Hint: Souvenez-vous que w correspond au vecteur c(11, 3, 4, 5, 9)et que  R applique les opérateurs sur un vecteur élement par élément. Ainsi à quel vecteur sera égal w<=5 ?
+
+- Class: mult_question
+  Output: Quel va être le résultat de l'instruction w>4 & w<=9?
+  CorrectAnswer: NULL
+  AnswerChoices: un vecteur de dimension 5; TRUE; FALSE
+  AnswerTests: omnitest(correctVal='un vecteur de dimension 5')
+  Hint: Souvenez-vous que R applique les opérateurs sur un vecteur élement par élément.
+
+- Class: cmd_question
+  Output: Une dernière question plus compliquée. Construire un vecteur contenant uniquement des valeurs TRUE ou FALSE qui corresponde au résultat de l'expression w>3 & w<=9.
+  CorrectAnswer: c(FALSE, FALSE, TRUE, TRUE, TRUE)
+  AnswerTests: omnitest(correctExpr='c(FALSE, FALSE, TRUE, TRUE, TRUE)')
+  Hint: Souvenez-vous que w correspond au vecteur c(11, 3, 4, 5, 9). Enfin sachez que TRUE & TRUE donne TRUE, que TRUE & FALSE donne FALSE, que FALSE & FALSE donne FALSE. A quel vecteur est alors égal w>3 & w<=9 ?
+
+- Class: cmd_question
+  Output: Une dernière petite chose avant de conclure cette première leçon, il faut savoir que, pour R, la valeur logique FALSE est associée à la valeur numérique 0, et la valeur logique TRUE est associée à la valeur numérique 1. Pour vous en convaincre, demandez à R si TRUE est égal à 1.
+  CorrectAnswer: TRUE == 1
+  AnswerTests: any_of_exprs('TRUE == 1', '1 == TRUE')
+  Hint: Tapez l'instruction TRUE == 1, puis appuyer sur la touche Entrée.
+
+- Class: text
+  Output: La réponse est TRUE. En conséquence, TRUE et 1 sont bien égaux ! Il en est de même pour FALSE et 0.
+
+
+- Class: mult_question
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Etes-vous prêt ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Etes-vous certain de ne pas vouloir valider votre TP ? Dans ce cas appuyer sur la touche Esc pour sortir de cette leçon.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: googleForm_log()
+  Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: text
+  Output: Maintenant à vous de faire les leçons suivantes de ce TP1.

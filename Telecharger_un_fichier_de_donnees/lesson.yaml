@@ -1,0 +1,74 @@
+- Class: meta
+  Course: TP1-TC-CI
+  Lesson: Telecharger un fichier de donnees
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: mult_question
+  Output: "Vous devez maintenant ouvrir l'adresse suivante dans votre navigateur : https://catalog.data.gov/dataset/u-s-annual-seasonal-climate-normals-1981-2010. Souhaitez-vous que R ouvre directement votre navigateur sur la page en question ? Si vous répondez non, ce sera à vous de le faire manuellement pour pouvoir continuer cette leçon."
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: mon_test()
+  Hint: hint
+
+- Class: text
+  Output: La page web que vous venez d'ouvrir dans la question précédente donne accès à un jeu de données climatologiques provenant du gouvernement américain.
+    En descendant dans la page, vous pouvez voir que le jeu de données en question est disponible sous différents formats.
+    Dans cette leçon, nous allons utiliser le format csv. Cherchez le format en question dans la page. Pour ce format, ne cliquez pas sur download, ni sur open, mais cliquez sur l'entête de description du fichier csv afin d'ouvrir la page web correspondant à ce fichier ('Annual/Seasonal Climate Normals CSV Sample').
+
+- Class: text
+  Output: Dans cette page, vous allez trouver une URL qui permet de télécharger le fichier de données au format csv. Copiez-la.
+    Pour ce faire, il suffit de sélectionner l'URL en question puis de maintenir appuyée la touche Control tout en appuyant sur la touche c.
+
+- Class: cmd_question
+  Output: Maintenant, vous allez importer le fichier de données csv en question dans R à l'aide de l'instruction read.csv().
+    Cette instruction va devoir avoir en argument (dans la parenthèse) l'adresse que vous venez de copier, mais attention vous devez mettre cette adresse entre deux guillemets ou entre deux quotes.
+    Pour coller l'adresse à l'endroit où figure votre curseur, il vous suffit de maintenir appuyée la touche Control tout en appuyant sur la touche v.
+    Enfin, dans la même instruction, vous devez affecter le résultat de l'instruction read.csv() à la variable que vous nommerez data.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='data<-read.csv("https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv")',"data<-read.csv('https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv')")
+  Hint: Tapez l'instruction data<-read.csv('https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv'), puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: Maintenant, vous pouvez visualiser les premières lignes du jeu de données data à l'aide de l'instruction head(data).
+    Tapez cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='head(data)')
+  Hint: Tapez l'instruction head(data), puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: De même, pour visualiser les dernières lignes d'un jeu de données, il faut utiliser l'instruction tail.
+    Visualisez les dernières lignes du jeu de données data à l'aide de l'instruction tail().
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctExpr='tail(data)')
+  Hint: Tapez l'instruction tail(data), puis appuyez sur la touche Entrée.
+
+
+- Class: mult_question
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Etes-vous prêt ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Etes-vous certain de ne pas vouloir valider votre TP ? Dans ce cas appuyer sur la touche Esc pour sortir de cette leçon.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: googleForm_log()
+  Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: text
+  Output: Bravo, vous avez maintenant fini votre TP1 !
