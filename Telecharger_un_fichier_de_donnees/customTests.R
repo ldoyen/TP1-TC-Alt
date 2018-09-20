@@ -67,7 +67,7 @@ if(res){
 
   e <- get("e", parent.frame())
   e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr"
-  e$sujet_email<-paste0("**TP1-TC-Alt**",",log_$lesson_name,", ", nom_etud,collapse="")
+  e$sujet_email<-paste0("**TP1-TC-Alt** ",log_$lesson_name,", ", nom_etud,collapse="")
   e$corp_email<-encoded_log
 
 
