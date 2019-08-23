@@ -79,6 +79,8 @@ if(selection %in% 1:5){
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   e <- get("e", parent.frame())
+  e$encoded_log<-encoded_log
+  e$log_tbl<-log_tbl
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
   readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
@@ -142,6 +144,8 @@ submit_log_alt <- function(){
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   e <- get("e", parent.frame())
+  e$encoded_log<-encoded_log
+  e$log_tbl<-log_tbl
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
   readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
